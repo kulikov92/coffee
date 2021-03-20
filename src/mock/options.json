@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Зерна",
+    "type": "list",
+    "variants": [
+      {
+        "catId": 1,
+        "value": 1,
+        "label": "Арабика",
+        "price": 0
+      },
+      {
+        "catId": 1,
+        "value": 2,
+        "label": "Робуста (+100)",
+        "price": 100
+      },
+      {
+        "catId": 1,
+        "value": 3,
+        "label": "Либерика (+100)",
+        "price": 100
+      },
+      {
+        "catId": 1,
+        "value": 4,
+        "label": "Эксцельза (+100)",
+        "price": 100
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Обжарка",
+    "type": "list",
+    "variants": [
+      {
+        "catId": 2,
+        "value": 1,
+        "label": "Слабая",
+        "price": 0
+      },
+      {
+        "catId": 2,
+        "value": 2,
+        "label": "Средняя",
+        "price": 0
+      },
+      {
+        "catId": 2,
+        "value": 3,
+        "label": "Сильная",
+        "price": 0
+      }
+    ]
+  }
+]

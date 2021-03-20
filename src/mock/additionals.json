@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Сироп",
+    "variants": [
+      {
+        "catId": 1,
+        "value": 1,
+        "label": "Карамель (+100)",
+        "price": 100
+      },
+      {
+        "catId": 1,
+        "value": 2,
+        "label": "Ваниль (+100)",
+        "price": 100
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Дополнительно",
+    "variants": [
+      {
+        "catId": 2,
+        "value": 1,
+        "label": "Корица (+100)",
+        "price": 100
+      },
+      {
+        "catId": 2,
+        "value": 2,
+        "label": "Сахар",
+        "price": 0
+      }
+    ]
+  }
+]
