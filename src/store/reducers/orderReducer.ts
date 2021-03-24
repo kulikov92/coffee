@@ -1,5 +1,6 @@
 import { IOrderState } from '../types'
 import { ActionTypes } from '../actionTypes'
+import { OrderAction } from '../actions/type'
 
 const initialState: IOrderState = {
   id: null,
@@ -11,7 +12,7 @@ const initialState: IOrderState = {
   totalPrice: 0
 }
 
-export function orderReducer(state = initialState, action: any): IOrderState {
+export function orderReducer(state = initialState, action: OrderAction): IOrderState {
   switch (action.type) {
     case ActionTypes.CANCEL_ORDER:
       return {
@@ -32,10 +33,10 @@ export function orderReducer(state = initialState, action: any): IOrderState {
       }
     case ActionTypes.SET_ORDER_OPTIONS:
       if (action.payload.option) {
-        if (state.orderOptions.find(option => option.catId === action.payload.option.catId)) {
+        if (state.orderOptions.find(option => option.catId === action.payload.option!.catId)) {
           return {
             ...state,
-            orderOptions: [...state.orderOptions.filter(option => option.catId !== action.payload.option.catId), action.payload.option]
+            orderOptions: [...state.orderOptions.filter(option => option.catId !== action.payload.option!.catId), action.payload.option]
           }
         } else {
           return {
@@ -43,7 +44,7 @@ export function orderReducer(state = initialState, action: any): IOrderState {
             orderOptions: [...state.orderOptions, action.payload.option]
           }
         }
-      } else {
+      } else { // Удаление опции заказа
         return {
           ...state,
           orderOptions: state.orderOptions.filter(option => option.catId !== action.payload.catId)
@@ -55,7 +56,7 @@ export function orderReducer(state = initialState, action: any): IOrderState {
           ...state,
           orderAdditionals: [...state.orderAdditionals.filter((additional: any) => additional.catId !== action.payload.catId), ...action.payload.additional]
         }
-      } else {
+      } else { // Удаление опции заказа
         return {
           ...state,
           orderAdditionals: [...state.orderAdditionals.filter((additional: any) => additional.catId !== action.payload.catId)]
@@ -66,6 +67,7 @@ export function orderReducer(state = initialState, action: any): IOrderState {
   
       state.orderAdditionals.map((additional: any) => totalPrice += additional.price)
       state.orderOptions.map((option: any) => totalPrice += option.price)
+      
       return {
         ...state,
         totalPrice: totalPrice

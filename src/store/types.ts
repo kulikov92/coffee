@@ -41,16 +41,14 @@ export interface ICoffeeServing {
 }
 
 export interface ICoffeeState {
-  coffeeList: ICoffee[],
-  coffeeOptions: ICoffeeOptions[],
-  coffeeAdditionals: ICoffeeAdditionals[]
+  coffeeList: ICoffee[]
 }
 
 export interface IOrderState {
   id: number | null,
   title: string | null,
   orderOptions: ICoffeOption[],
-  orderAdditionals: ICoffeeAdditionals[],
+  orderAdditionals: ICoffeeAdditional[],
   orderServing: string,
   basePrice: number,
   totalPrice: number
@@ -58,9 +56,7 @@ export interface IOrderState {
 
 export interface IRootState {
   coffeeReducer: {
-    coffeeList: ICoffee[],
-    coffeeOptions: ICoffeeOptions[],
-    coffeeAdditionals: ICoffeeAdditionals[]
+    coffeeList: ICoffee[]
   },
   orderReducer: IOrderState
 }

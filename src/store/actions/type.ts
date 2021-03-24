@@ -60,3 +60,4 @@ export type SetOrderServing = ISetOrderServing
 export type SetOrderOption = ISetOrderOption
 export type SetOrderAdditional = ISetOrderAdditional
 export type SetOrderTotalPrice = ISetOrderTotalPrice
+export type OrderAction = SetNewOrder | CancelOrder | SetOrderServing | SetOrderOption | SetOrderAdditional | SetOrderTotalPrice
