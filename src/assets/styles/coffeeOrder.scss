@@ -32,3 +32,21 @@
     margin-bottom: 20px;
   }
 }
+
+.coffee-order__summary {
+  padding: 20px 0;
+}
+
+.coffee-order__summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: sans-serif;
+  font-size: 14px;
+  border-bottom: 1px dashed #c3c3c3;
+  padding: 10px 0;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}

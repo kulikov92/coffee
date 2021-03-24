@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
@@ -9,7 +9,7 @@ import {
   ICoffeeAdditional
 } from '../store/types'
 
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import coffeeAdditionals from '../mock/additionals.json'
 import coffeeOptions from '../mock/options.json'
@@ -28,7 +28,13 @@ import { Button } from '../components/Button'
 
 export const CoffeeOrder: React.FC = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const order: IOrderState = useSelector((state: IRootState) => state.orderReducer)
+
+  // Редирект при отсутствии заказа
+  useLayoutEffect(() => {
+    !order.id && history.push('/')
+  }, [history, order])
 
   function handleCancelOrder() {
     dispatch(setCancelOrder())
@@ -46,12 +52,6 @@ export const CoffeeOrder: React.FC = () => {
 
   function handleServingChange(serving: ICoffeeServing) {
     dispatch(setOrderServing(serving.value))
-  }
-
-  if (!order.id) {
-    return (
-      <Redirect to='/'/>
-    )
   }
 
   return (
@@ -95,6 +95,24 @@ export const CoffeeOrder: React.FC = () => {
             defaultValue={coffeeServing[0]}
             onChange={(serving) => handleServingChange(serving as ICoffeeServing)}/>
         </div>
+      </div>
+      <div className="coffee-order__summary">
+        <div className="coffee-order__summary-item">
+          <span>{order.title}</span>
+          <span>{order.basePrice}</span>
+        </div>
+        {order.orderOptions.length && order.orderOptions.map(option => (
+          <div className="coffee-order__summary-item">
+            <span>{option.label}</span>
+            <span>+{option.price}</span>
+          </div>
+        ))}
+        {order.orderAdditionals.length && order.orderAdditionals.map(additional => (
+          <div className="coffee-order__summary-item">
+            <span>{additional.label}</span>
+            <span>+{additional.price}</span>
+          </div>
+        ))}
       </div>
       <div className="coffee-order__info">
         <div className="coffee-order__title">Итого:</div>
